@@ -1,0 +1,52 @@
+﻿<!--Card-->
+
+<div id="new-event-modal-placeholder"></div>
+<div id="event-details-modal-placeholder"></div>
+<div id="calendar-manual-modal-placeholder"></div>
+
+<div class="m-5 margin-left-0-max-sm card">
+    <!--Card header-->
+    <div class="view view-cascade py-3 blue lighten-2 mx-4 d-flex justify-content-between align-items-center" style="margin-top:-1rem">
+        <div>
+            <button type="button" title="Previous week" class="btn btn-outline-white btn-rounded btn-sm px-2 mx-2" onclick="shiftDates(false)">
+                <i class="fas fa-angle-double-left mt-0"></i>
+            </button>
+
+            <button type="button" title="Next week" class="btn btn-outline-white btn-rounded btn-sm px-2 mx-2" onclick="shiftDates(true)">
+                <i class="fas fa-angle-double-right mt-0"></i>
+            </button>
+        </div>
+        <div class="white-text mx-3">Calendar</div>
+        <div>
+            <button type="button" title="Add new event" class="btn btn-outline-white btn-rounded btn-sm px-2 mx-2"
+                    data-toggle="ajax-new-event-modal" data-target="#modalNewEventCreate" data-url="@Url.Action("NewEvent")">
+                <i class="fas fa-plus mt-0"></i>
+            </button>
+            <button type="button" title="Calendar manual" class="btn btn-outline-white btn-rounded btn-sm px-2 mx-2">
+                <i class="fas fa-info-circle mt-0"></i>
+            </button>
+        </div>
+    </div>
+    <!--/Card header-->
+    <!--Card content-->
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table id="calendarTable" class="table">
+                <thead>
+                    <tr id="dateRow"></tr>
+                </thead>
+                <tbody id="calendarBody"></tbody>
+            </table>
+        </div>
+        <hr class="my-0">
+        <!--Bottom Table UI-->
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="~/js/scheduler.js"></script>
+
+<script>
+    generateCalendarView();
+</script>

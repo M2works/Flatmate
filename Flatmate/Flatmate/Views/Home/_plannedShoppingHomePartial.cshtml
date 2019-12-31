@@ -1,0 +1,27 @@
+﻿@model List<Flatmate.Models.EntityModels.SingleComplexOrder>
+@using System.Globalization;
+@{
+    CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture("de-DE");
+}
+
+@foreach (var shoppingList in Model)
+{
+    <div class="col-lg-12 col-sm-6 col-12 mb-2">
+        <div class="toast animated fadeIn" style="opacity: 1">
+            <div class="toast-header d-block yellow lighten-5">
+                <strong>@shoppingList.Subject</strong><br />
+                <i><small>@shoppingList.ExpenseCategory</small></i><br />
+                <small>Created: @shoppingList.CreationDate.ToString("d", cultureInfo)</small>
+            </div>
+            <div class="toast-body">
+                <ul class="p-1">
+                    @foreach(var pe in shoppingList.OrderElements)
+                    {
+                        <li>@pe.Title - @pe.Amount <small>@pe.Unit</small></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+            

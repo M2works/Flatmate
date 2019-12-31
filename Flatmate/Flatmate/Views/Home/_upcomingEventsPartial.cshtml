@@ -1,0 +1,30 @@
+﻿@model List<Flatmate.ViewModels.Scheduler.EventDetails>
+@using System.Globalization;
+@{
+    CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture("de-DE");
+}
+
+@foreach (var eventDetail in Model)
+{
+    <div class="toast animated fadeIn" style="opacity: 1">
+        <div class="toast-header red lighten-5">
+            <strong class="mr-auto">@eventDetail.Title</strong>
+            <small>@eventDetail.StartDate.ToString("g", cultureInfo)</small>
+        </div>
+        <div id="toast-@eventDetail.Id" class="toast-body">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="mb-2">@eventDetail.Description</div>
+                    Participants:
+                    @foreach (var pn in eventDetail.ParticipantNames)
+                    {
+                        var participantName = (' ' + pn).ToString();
+                        <button class="btn-sm no-inner-padding brown lighten-5 border-0" disabled>
+                            @participantName
+                        </button>
+                    }
+                </div>
+            </div>            
+        </div>
+    </div>
+}
